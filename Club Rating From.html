@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Club Rating From</title>
+	</head>
+	<h1 id="demo" onmouseover="mouseOver()" 
+		onmouseout="mouseOut()">Club Rating From</h1>
+		<body>
+	        <form method="POST" enctype"multipart/from-data" name="user"
+		action="read_date.php"> 
+      <input type="hidden" name="region" value"Asia" />
+        <fieldset>
+		<legend>Your Infoemation</legend> 
+			<label>Your Name :</label>
+            <input type="text" id="yname" 
+                name="yourname" 
+                onchange="updateYname()">
+			<br>
+            <label>Enter a phone number :</label>
+            <input type="tel" id="pnum" name="pnum"
+			placeholder="XXXX-XXXX" 
+			pattern="[0-9]{4}-[0-9]{4}" required><br>
+		Are you Member ? :
+        <input type="radio" name"Are you Member ?" value"No" />No
+		<input type="radio" name"Are you Member ?" value"Yes" checked="checked"/>Yes<br />
+		Your age :
+        <select name="age">
+		<option value="Single">9-</option>
+		<option value="Single">10-17</option>
+		<option value="Single">18-26</option>
+		<option value="Single">27-36</option>
+		<option value="Single">37-47</option>
+		<option value="Single">48-59</option>
+		<option value="Single">60+</option>
+		</select>
+        <br />
+        Join Period : from
+        <input type="date" />&nbsp; to &nbsp;
+        <input type="date" /><br />
+        Your Gender :
+        <input name="F1" type="checkbox" value="N" checked="checked" />None
+        <input name="F2" type="checkbox" value="G" />Girl
+        <input name="F3" type="checkbox" value="B" />Boy
+		</fieldset>
+		<fieldset>
+			<legend>Your experience in the Club:</legend>
+			<textarea rows="4" cols="50" name="comment">In less 300 words...
+			</textarea>
+			<br/>
+			Send us any photo : <input type="file"name "file"/ name="photo" /><br />
+			Rating :
+			<input type ="number" name="rating" Min="2", Max="5")>
+		</fieldset>
+		Choose a colour
+		<input type="color" name="color">
+		for the tee as your gift after you send this form. ^_^<br />
+		<br/>
+		<input type="submit" name ="submit" value="Send Data">
+		&nbsp;&nbsp;
+		<input type="reset" name ="reset" value="Clear Data">
+        </form>
+		<script type="text/javascript">
+			let yname = '';
+			let pnum = '';
+			updateYname = () => {
+				yname = document
+					.getElementById('yname').value;
+			}
+			updatePnum = () => {
+				pnum = document
+					.getElementById('pnum').value;
+			}
+			window.addEventListener('beforeunload',function (e) {
+				if (yname !== '' ||
+					pnum !== '' ) {
+				e.preventDefault();
+				e.returnValue = '';
+				}
+			});
+			function mouseOver() {
+				document.getElementById("demo").style.color = "red";
+			}
+		
+	</script>
+</body>
+  
+</html>
