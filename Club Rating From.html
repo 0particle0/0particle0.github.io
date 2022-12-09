@@ -1,46 +1,95 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Club Rating From</title>
+    <title>Club Rating Form</title>
+		<script>
+		function print_result() {
+			//Name 
+			var name = document.f0.name.value;
+			alert("Your Name: " + name);
+			
+			//phone 
+			var phone = document.f0.phone.value;
+			alert("Your phone number: " + phone);
+			
+			//Member
+			var member; 
+			
+			if (document.f0.member[1].checked){
+				member = document.f0.member[1].value;
+			
+			}else{
+				member = document.f0.member[0].value;
+		
+			}
+			alert("You are member? " + member);
+			
+			//Age 
+			var age = document.f0.age.value;
+			alert("Your age: " + age);
+			
+			var gender = "";
+			var gender_len = document.f0.gender.length;
+			
+			for(var i=0; i<gender_len; i++){
+				if (document.f0.gender[i].checked){
+					gender = gender + document.f0.gender[i].value + " ";
+				}
+			}
+			alert("Your gender: " + gender);
+		
+			var rating = document.f0.rating.value;
+			alert("Your Rating: " + rating);
+		}
+		</script>
 	</head>
+	
 	<h1 id="demo" onmouseover="mouseOver()" 
-		onmouseout="mouseOut()">Club Rating From</h1>
+		onmouseout="mouseOut()">Club Rating Form</h1>
 		<body style="background-color:#E2ECF5">
-	        <form method="POST" enctype"multipart/from-data" name="user"
-		action="read_date.php"> 
+	        <form name="f0" onSubmit="print_result()"> 
       <input type="hidden" name="region" value"Asia" />
         <fieldset>
 		<legend>Your Infoemation</legend> 
 			<label>Your Name :</label>
-            <input type="text" id="yname" 
-                name="yourname" 
-                onchange="updateYname()">
+            <input type="text" id="name" 
+                name="name" 
+                onchange="updateYname()"
+				title="Capital first character" 
+				pattern="^[A-Z][a-z]*" required>
 			<br>
-            <label>Enter a phone number :</label>
-            <input type="tel" id="pnum" name="pnum"
+            <label>Enter your phone number :</label>
+            <input type="tel" id="phone" name="phone"
 			placeholder="XXXX-XXXX" 
 			pattern="[0-9]{4}-[0-9]{4}" required><br>
 		Are you Member ? :
-        <input type="radio" name"Are you Member ?" value"No" />No
-		<input type="radio" name"Are you Member ?" value"Yes" checked="checked"/>Yes<br />
+        <input type="radio" name="member" value="No" />No
+		<input type="radio" name="member" value="Yes" checked="checked" />Yes<br />
 		Your age :
-        <select name="age">
-		<option value="Single">9-</option>
-		<option value="Single">10-17</option>
-		<option value="Single">18-26</option>
-		<option value="Single">27-36</option>
-		<option value="Single">37-47</option>
-		<option value="Single">48-59</option>
-		<option value="Single">60+</option>
+        <select name="age" id="age">
+		<optgroup label="<60">
+		<option value="0-2">0-2</option>
+		<option value="3-9">3-9</option>
+		<option value="10-17">10-17</option>
+		<option value="18-26">18-26</option>
+		<option value="27-36">27-36</option>
+		<option value="37-47">37-47</option>
+		<option value="48-59">48-59</option>
+		</optgroup>
+		<optgroup label="60+">
+		<option value="61-73">61-73</option>
+		<option value="74-87">74-87</option>
+		<option value="87-101">87-101</option>
+		</optgroup>
 		</select>
         <br />
-        Join Period : from
-        <input type="date" />&nbsp; to &nbsp;
-        <input type="date" /><br />
+        Join Period : form
+        <input type="date" name="time"/>&nbsp; to &nbsp;
+        <input type="date" name="time"/><br />
         Your Gender :
-        <input name="F1" type="checkbox" value="N" checked="checked" />None
-        <input name="F2" type="checkbox" value="G" />Girl
-        <input name="F3" type="checkbox" value="B" />Boy
+        <input name="gender" type="checkbox" value="None" />None
+        <input name="gender" type="checkbox" value="Girl" />Girl
+        <input name="gender" type="checkbox" value="Boy" />Boy
 		</fieldset>
 		<fieldset>
 			<legend>Your experience in the Club:</legend>
@@ -55,7 +104,7 @@
 		<input type="color" name="color">
 		for the tee as your gift after you send this form. ^_^<br />
 		<br/>
-		<input type="submit" name ="submit" value="Submit" />
+		<input type="submit" name ="submit" value="Send Data">
 		&nbsp;&nbsp;
 		<input type="reset" name ="reset" value="Clear Data">
         </form>
@@ -82,6 +131,16 @@
 			}
 		
 	</script>
+   <form>
+    Not a member yet? Hurry up and join, now just need👇👇
+	<br>
+	Price : HK$ 39.9 per month x
+    <input type="number" name="months" min="1" max='24' oninput="total.value=months.value*39.9">
+	&nbsp;&nbsp;&nbsp;&nbsp;
+	months = HK$
+	&nbsp;&nbsp;&nbsp;&nbsp;
+	<output name="total">0</output> <br>
+   </form>
 </body>
   
 </html>
